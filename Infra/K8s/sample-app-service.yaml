@@ -1,0 +1,26 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: sample-app-1
+spec:
+  selector:
+    app: sample-app-1
+  ports:
+    - protocol: TCP
+      port: 8801
+      targetPort: 8080
+ # type: LoadBalancer
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample-app-2
+spec:
+  selector:
+    app: sample-app-2
+  ports:
+    - protocol: TCP
+      port: 8802
+      targetPort: 8080
+ # type: LoadBalancer

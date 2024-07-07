@@ -1,0 +1,62 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-app-1
+  labels:
+    app: sample-app-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-app-1
+  template:
+    metadata:
+      name: sample-app-1
+      labels:
+        app: sample-app-1
+    spec:
+      containers:
+        - name: sample-app-1
+          image: kparavindbabu/containerorchestration.api
+          env:
+            - name: InternalServiceSettings__Url
+              value: http://sample-app-2.default.svc.cluster.local:8802
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8081
+              protocol: TCP
+      restartPolicy: Always
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-app-2
+  labels:
+    app: sample-app-2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-app-2
+  template:
+    metadata:
+      name: sample-app-2
+      labels:
+        app: sample-app-2
+    spec:
+      containers:
+        - name: sample-app-2
+          image: kparavindbabu/containerorchestration.api
+          env:
+            - name: InternalServiceSettings__Url
+              value: http://sample-app-1.default.svc.cluster.local:8801
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8081
+              protocol: TCP
+      restartPolicy: Always
+      
