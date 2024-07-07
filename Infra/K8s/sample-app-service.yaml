@@ -1,10 +1,10 @@
 ﻿apiVersion: v1
 kind: Service
 metadata:
-  name: sample-app-1
+  name: service-1
 spec:
   selector:
-    app: sample-app-1
+    app: service-1
   ports:
     - protocol: TCP
       port: 8801
@@ -15,10 +15,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: sample-app-2
+  name: service-2
 spec:
   selector:
-    app: sample-app-2
+    app: service-2
   ports:
     - protocol: TCP
       port: 8802

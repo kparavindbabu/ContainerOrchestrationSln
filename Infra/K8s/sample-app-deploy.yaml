@@ -1,26 +1,26 @@
 ﻿apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sample-app-1
+  name: service-1
   labels:
-    app: sample-app-1
+    app: service-1
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: sample-app-1
+      app: service-1
   template:
     metadata:
-      name: sample-app-1
+      name: service-1
       labels:
-        app: sample-app-1
+        app: service-1
     spec:
       containers:
-        - name: sample-app-1
+        - name: service-1
           image: kparavindbabu/containerorchestration.api
           env:
             - name: InternalServiceSettings__Url
-              value: http://sample-app-2.default.svc.cluster.local:8802
+              value: http://service-2.default.svc.cluster.local:8802
             - name: ASPNETCORE_ENVIRONMENT
               value: Development
           imagePullPolicy: IfNotPresent
@@ -32,26 +32,26 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sample-app-2
+  name: service-2
   labels:
-    app: sample-app-2
+    app: service-2
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: sample-app-2
+      app: service-2
   template:
     metadata:
-      name: sample-app-2
+      name: service-2
       labels:
-        app: sample-app-2
+        app: service-2
     spec:
       containers:
-        - name: sample-app-2
+        - name: service-2
           image: kparavindbabu/containerorchestration.api
           env:
             - name: InternalServiceSettings__Url
-              value: http://sample-app-1.default.svc.cluster.local:8801
+              value: http://service-1.default.svc.cluster.local:8801
             - name: ASPNETCORE_ENVIRONMENT
               value: Development
           imagePullPolicy: IfNotPresent

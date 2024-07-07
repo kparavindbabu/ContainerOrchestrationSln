@@ -63,3 +63,18 @@ Navigate to this file path `cd ContainerOrchestrationSln\Infra\K8s`
    - http://localhost/s2/WeatherForecast
    - http://localhost/s2/WeatherForecast/MachineInfo
    - http://localhost/s2/WeatherForecast/CallInternalService  (Internally calls http://localhost/s1/WeatherForecast/CallInternalService)
+   
+
+## Cleanup:
+
+```shell
+kubectl delete -f sample-app-ingress.yaml
+```
+
+```shell
+kubectl delete -f sample-app-service.yaml
+```
+
+```shell
+kubectl delete -f sample-app-deploy.yaml
+```
