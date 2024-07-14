@@ -7,10 +7,16 @@
 
 ## Docker Image Build:
 
-Run the following command from root solution directory `\ContainerOrchestrationSln`.
+Run the following command from the root solution directory `\ContainerOrchestrationSln`.
 ```shell
-docker build . -f .\ContainerOrchestration.Api\Dockerfile -t kparavindbabu/containerorchestration.api
+docker build . -f .\ContainerOrchestration.Api\Dockerfile -t kparavindbabu/simple-dotnet-api:1.0.0
 ```
+
+```shell
+docker push kparavindbabu/simple-dotnet-api:1.0.0
+```
+
+https://hub.docker.com/repository/docker/kparavindbabu/simple-dotnet-api/general
 
 ## Deploy to Kubernetes Cluster:
 
